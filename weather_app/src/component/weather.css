@@ -1,0 +1,61 @@
+.main {
+    position: relative;
+    background: linear-gradient(91deg, #f1eefc, #9dc6ff 70%, #a5bcff);
+    /* （body背景色） */
+    height: 700px;
+}
+
+.icon{
+    font-size: 100px;
+    color: rgb(219, 83, 83);
+}
+.input{
+    background-color: transparent;
+    color: white;
+    border-bottom: 5px solid black;
+    border-radius: 0;
+    border:0;
+}
+.input:focus{
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.card {
+    position: relative;
+    width: 900px;
+    height: 500px;
+    left: 200px;
+    top: 100px;
+    
+}
+
+.card_top{
+    height: 250px;  
+    background: linear-gradient(to right, #bb313e25, #bb313e25, #d7222925, #dd4a1625, #e4761525, #f5c50025, #f0e92725, #b1ce2425, #48a93525, #03944525, #157c4f25, #176a5825, #1b556325, #1d386f25, #1d386f25, #20277825, #52266325, #8a244b25);
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card_top_item{
+    width: 250px;
+    margin-top: 27.5px;
+    height: 175px;
+    background-color: transparent;
+}
+.card_bottom{
+    background-color: wheat;
+    height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card_bottom_item{
+    background-color:white;
+    width: 150px;
+    margin-top: 27.5px;
+    height: 200px;
+}
+
