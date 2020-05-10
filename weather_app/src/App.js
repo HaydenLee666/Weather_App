@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './component/WeatherApp.js'
 import 'weather-icons/css/weather-icons.css';
+import 'weather-underground-icons/dist/wu-icons-style.css'
 
 function App() {
   return (

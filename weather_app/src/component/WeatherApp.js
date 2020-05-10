@@ -5,9 +5,9 @@ import WeatherAppJPX from './WeatherAppJPX.js';
 
 
 const API_key = '7abb2f96af69ff0a9164e92bc934932d';
-const city = 'Sydney';
-const apiF = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_key}`;
-const api = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`;
+const CITY = 'Sydney';
+const API_FORECAST = `http://api.openweathermap.org/data/2.5/forecast?q=${CITY}&appid=${API_key}`;
+const API = `http://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_key}`;
 
 class WeatherApp extends React.Component {
     constructor() {
@@ -24,25 +24,35 @@ class WeatherApp extends React.Component {
             celsius: undefined,
             description: "",
             error: false,
+            humidity:undefined,
+            wind_speed:undefined,
+            visibility:undefined,
             
             tempF: [],
             iconF: [],
             dateF: [],
             descriptionF: [],
 
-            background:{background:encodeURI('./background.jpg')},
+          
 
         };
 
         // store icons' ccs name
         this.weatherIcons = {
-            Thunderstorm: "wi-thunderstorm",
-            Drizzle: "wi-sleet",
-            Rain: "wi-storm-showers",
-            Snow: "wi-snow",
-            Atmosphere: "wi-fog",
-            Clear: "wi-day-sunny",
-            Clouds: "wi-day-fog"
+            // Thunderstorm: "wi-thunderstorm",
+            // Drizzle: "wi-sleet",
+            // Rain: "wi-storm-showers",
+            // Snow: "wi-snow",
+            // Atmosphere: "wi-fog",
+            // Clear: "wi-day-sunny",
+            // Clouds: "wi-day-fog",
+            Thunderstorm: "wu-tstorms",
+            Drizzle: "wu-chancerain",
+            Rain: "wu-rain",
+            Snow: "wu-snow",
+            Atmosphere: "wu-fog",
+            Clear: "wu-sunny",
+            Clouds: "wu-cloudy"
         };
     }
 
@@ -142,7 +152,7 @@ class WeatherApp extends React.Component {
     async componentDidMount() {
 
         // function: get today weather
-        const response = await (await fetch(api)).json();
+        const response = await (await fetch(API)).json();
         // const response=await fetch(api);
 
         console.log("Today:");
@@ -159,14 +169,17 @@ class WeatherApp extends React.Component {
             temp: this.calculateCelsius(response.main.temp),
             temp_max: this.calculateCelsius(response.main.temp_max),
             temp_min: this.calculateCelsius(response.main.temp_min),
-            description: response.weather[0].description,
+            description: this.optimizedDescription(response.weather[0].description),
             icon: this.get_WeatherIcon(this.weatherIcons, response.weather[0].id),
+            humidity:response.main.humidity,
+            visibility:Math.round(response.visibility/1000),
+            wind_speed:Math.round(response.wind.speed*3.6),
         });
 
-
+        
 
         //function: forecast coming five days
-        const responseF = await (await fetch(apiF)).json();
+        const responseF = await (await fetch(API_FORECAST)).json();
         console.log('Forecast:');
         console.log(responseF);
         const obj = {};
@@ -181,7 +194,7 @@ class WeatherApp extends React.Component {
 
         for (let i = 0; i <= 4; i++) {
             tempFArray.push(this.calculateCelsius(obj[i].main.temp));
-            descriptionFArray.push(obj[i].weather[0].description);
+            descriptionFArray.push(this.optimizedDescription(obj[i].weather[0].description));
             iconFArray.push(this.get_WeatherIcon(this.weatherIcons, obj[i].weather[0].id));
             dateFArray.push(this.get_Date(obj[i].dt_txt.slice(5, 10)));
         }
@@ -226,8 +239,11 @@ class WeatherApp extends React.Component {
                     temp: this.calculateCelsius(response.main.temp),
                     temp_max: this.calculateCelsius(response.main.temp_max),
                     temp_min: this.calculateCelsius(response.main.temp_min),
-                    description: response.weather[0].description,
+                    description: this.optimizedDescription(response.weather[0].description),
                     icon: this.get_WeatherIcon(this.weatherIcons, response.weather[0].id),
+                    humidity:response.main.humidity,
+                    visibility:Math.round(response.visibility/1000),
+                    wind_speed:Math.round(response.wind.speed*3.6),
                 });
 
 
@@ -247,7 +263,7 @@ class WeatherApp extends React.Component {
 
                 for (let i = 0; i <= 4; i++) {
                     tempFArray.push(this.calculateCelsius(obj[i].main.temp));
-                    descriptionFArray.push(obj[i].weather[0].description);
+                    descriptionFArray.push(this.optimizedDescription(obj[i].weather[0].description));
                     iconFArray.push(this.get_WeatherIcon(this.weatherIcons, obj[i].weather[0].id));
                     dateFArray.push(this.get_Date(obj[i].dt_txt.slice(5, 10)));
                 }
@@ -270,6 +286,18 @@ class WeatherApp extends React.Component {
         return Math.floor(temp - 273.15);
     }
 
+    optimizedDescription(description){
+        description=description[0].toUpperCase()+description.slice(1);
+
+        for(let i=0;i<=description.length;i++){
+            if(description[i]==" "){
+                description=description.slice(0,i+1)+description[i+1].toUpperCase()+description.slice(i+2);
+            }
+        }
+            return (description);
+
+    }
+
 
 
     render() {
@@ -290,8 +318,10 @@ class WeatherApp extends React.Component {
                 tempF={this.state.tempF}
                 descriptionF={this.state.descriptionF}
                 iconF={this.state.iconF}
-                dateF={this.state.dateF}
-                background={this.state.background}
+                dateF={this.state.dateF} 
+                humidity={this.state.humidity}
+                visibility={this.state.visibility}
+                wind_speed={this.state.wind_speed}               
             />
 
 

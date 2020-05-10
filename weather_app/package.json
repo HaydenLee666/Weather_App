@@ -9,7 +9,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "weather-icons": "git+https://github.com/erikflowers/weather-icons.git"
+    "weather-icons": "git+https://github.com/erikflowers/weather-icons.git",
+    "weather-underground-icons": "git+https://github.com/manifestinteractive/weather-underground-icons.git"
   },
   "scripts": {
     "start": "react-scripts start",

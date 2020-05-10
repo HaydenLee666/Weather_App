@@ -4,7 +4,7 @@ import './weather.css';
 import clearImgUrl from './clear.jpg';
 import cloudsImgUrl from './clouds.jpeg';
 import drizzleImgUrl from './drizzle.jpeg';
-import rainImgUrl from './rain.jpeg';
+import rainImgUrl from './rain.jpg';
 import snowImgUrl from './snow.jpeg';
 import thunderstormImgUrl from './thunderstorm.jpeg';
 import atmosphereImgUrl from './atmosphere.jpeg';
@@ -12,95 +12,110 @@ import atmosphereImgUrl from './atmosphere.jpeg';
 
 
 const WeatherAppJPX = (props) => {
-        
-    const url='url(' +clearImgUrl+ ')';
-    const a='background-size';
-    const c={
-        background:url,
-        a: 'contain',
-        };
+
+    let url = '', location = '', background = {};
+
+
+    switch (props.icon) {
+        case 'wu-tstorms':
+            url = 'url(' + thunderstormImgUrl + ')' + `no-repeat center`;
+            break;
+        case 'wu-chancerain':
+            url = 'url(' + drizzleImgUrl + ')' + `no-repeat center`;
+            break;
+        case 'wu-rain':
+            url = 'url(' + rainImgUrl + ')' + `no-repeat center`;
+            break;
+        case 'wu-snow':
+            url = 'url(' + snowImgUrl + ')' + `no-repeat center`;
+            break;
+        case 'wu-fog':
+            url = 'url(' + atmosphereImgUrl + ')' + `no-repeat center`;
+            break;
+        case 'wu-sunny':
+            url = 'url(' + clearImgUrl + ')' + `no-repeat center`;
+            break;
+        case 'wu-cloudy':
+            url = 'url(' + cloudsImgUrl + ')' + `no-repeat center`;
+            break;
+    }
+
+    background = {
+        background: url,
+    };
+
+    location = `${props.city} ${props.country}`;
+
+
     return (
 
-        <div className='main' >
+        <div className='main' style={background}>
             <div className='card'  >
                 <div className='card_top' >
                     <div className='card_top_item'>
-                        <i className={`wi ${props.icon} icon`}></i>
-                        <h3>{props.description}</h3>
-                        {props.city}{props.country}
+                        {/* <i className={`wi ${props.icon} icon`}></i> */}
+                        <i className={`wu wu-white wu-128 ${props.icon}`}></i>
+                        <div className='card_top_item_description'>{props.description}</div>
+                        <div className='card_top_item_location' >{props.city}&emsp;&emsp;{props.country}</div>
 
                     </div>
                     <div className='card_top_item'>
-                        {props.isLoading && <h1>Loading...</h1>}
-                        {!props.isLoading && (<span>{props.temp}</span>)}
-                        {!props.isLoading && (<span>&deg;</span>)}
-                        <br />
-                        <span> {props.temp_max}&deg;</span>
-                        <span> {props.temp_min}&deg;</span>
+
+                        {props.temp ? <div className='card_top_item_temp'>{props.temp}&deg;</div> : null}
+
+                        {(props.temp_max && props.temp_min) ? <div className='card_top_item_tempMaxMin'><span>{props.temp_max}&deg;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span><span> {props.temp_min}&deg;</span></div> : null}
+                        {props.humidity ? <div className='card_top_item_HWV'>Humidity:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{props.humidity}&emsp;%</div> : null}
+                        {props.visibility ? <div className='card_top_item_HWV'>Visibility:&emsp;&emsp;&emsp;&emsp;&emsp;{props.visibility}&emsp;km</div> : null}
+                        {props.wind_speed ? <div className='card_top_item_HWV'>Wind:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{props.wind_speed}&emsp;km/h</div> : null}
                     </div>
                     <div className='card_top_item'>
                         <form onSubmit={props.loadWeather}>
-                            <input type='text' className='input' name='city' autoComplete='off' placeholder='city' />
-                            <br />
-
-                            <br />
-                            <button className='button'> Check Weather</button>
+                            <div className='inputComponent'>
+                                <input type='text' className='input' name='city' autoComplete='off' />
+                                <label className='labelCity'>
+                                    <span className='contentCity'>City&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                </label>
+                            </div>
+                            <br /><br /><br /><br />
+                            <div><button className='button'> Check Weather</button></div>
                         </form>
                     </div>
                 </div>
                 <div className='card_bottom'>
                     <div className='card_bottom_item'>
                         <br />
-                        <span> {props.dateF[0]}</span>
-                        <br />
-                        <i className={`wi ${props.iconF[0]} `}></i>
-                        <br />
-                        <span> {props.tempF[0]}&deg;</span>
-                        <br />
-                        <span> {props.descriptionF[0]}</span>
-
+                        <div className='card_bottom_item_date'> {props.dateF[0]}</div>
+                        <div className='card_bottom_item_icon'><i className={`wu wu-white wu-64 ${props.iconF[0]}`}></i></div>
+                        {props.tempF[0] ? (<div className='card_bottom_item_temperture'> {props.tempF[0]}&deg;</div>) : null}
+                        <div className='card_bottom_item_description'> {props.descriptionF[0]}</div>
                     </div>
                     <div className='card_bottom_item'>
                         <br />
-                        <span> {props.dateF[1]}</span>
-                        <br />
-                        <i className={`wi ${props.iconF[1]} `}></i>
-                        <br />
-                        <span> {props.tempF[1]}&deg;</span>
-                        <br />
-                        <span> {props.descriptionF[1]}</span>
-
+                        <div className='card_bottom_item_date'> {props.dateF[1]}</div>
+                        <div className='card_bottom_item_icon'><i className={`wu wu-white wu-64 ${props.iconF[1]}`}></i></div>
+                        {props.tempF[1] ? (<div className='card_bottom_item_temperture'> {props.tempF[1]}&deg;</div>) : null}
+                        <div className='card_bottom_item_description'> {props.descriptionF[1]}</div>
                     </div>
                     <div className='card_bottom_item'>
                         <br />
-                        <span> {props.dateF[2]}</span>
-                        <br />
-                        <i className={`wi ${props.iconF[2]} `}></i>
-                        <br />
-                        <span> {props.tempF[2]}&deg;</span>
-                        <br />
-                        <span> {props.descriptionF[2]}</span>
-
+                        <div className='card_bottom_item_date'> {props.dateF[2]}</div>
+                        <div className='card_bottom_item_icon'><i className={`wu wu-white wu-64 ${props.iconF[2]}`}></i></div>
+                        {props.tempF[2] ? (<div className='card_bottom_item_temperture'> {props.tempF[2]}&deg;</div>) : null}
+                        <div className='card_bottom_item_description'> {props.descriptionF[2]}</div>
                     </div>
                     <div className='card_bottom_item'>
                         <br />
-                        <span> {props.dateF[3]}</span>
-                        <br />
-                        <i className={`wi ${props.iconF[3]} `}></i>
-                        <br />
-                        <span> {props.tempF[3]}&deg;</span>
-                        <br />
-                        <span> {props.descriptionF[3]}</span>
+                        <div className='card_bottom_item_date'> {props.dateF[3]}</div>
+                        <div className='card_bottom_item_icon'><i className={`wu wu-white wu-64 ${props.iconF[3]}`}></i></div>
+                        {props.tempF[3] ? (<div className='card_bottom_item_temperture'> {props.tempF[3]}&deg;</div>) : null}
+                        <div className='card_bottom_item_description'> {props.descriptionF[3]}</div>
                     </div>
                     <div className='card_bottom_item'>
                         <br />
-                        <span> {props.dateF[4]}</span>
-                        <br />
-                        <i className={`wi ${props.iconF[4]} `}></i>
-                        <br />
-                        <span> {props.tempF[4]}&deg;</span>
-                        <br />
-                        <span> {props.descriptionF[4]}</span>
+                        <div className='card_bottom_item_date'> {props.dateF[4]}</div>
+                        <div className='card_bottom_item_icon'><i className={`wu wu-white wu-64 ${props.iconF[4]}`}></i></div>
+                        {props.tempF[4] ? (<div className='card_bottom_item_temperture'> {props.tempF[4]}&deg;</div>) : null}
+                        <div className='card_bottom_item_description'> {props.descriptionF[4]}</div>
                     </div>
 
                 </div>
