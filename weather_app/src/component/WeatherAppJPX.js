@@ -2,12 +2,14 @@ import React from "react";
 import './weather.css';
 //import imgurl from './background.jpg';
 import clearImgUrl from './clear.jpg';
-import cloudsImgUrl from './clouds.jpeg';
+import cloudsImgUrl from './clouds.jpg';
 import drizzleImgUrl from './drizzle.jpeg';
 import rainImgUrl from './rain.jpg';
 import snowImgUrl from './snow.jpeg';
 import thunderstormImgUrl from './thunderstorm.jpeg';
-import atmosphereImgUrl from './atmosphere.jpeg';
+import atmosphereImgUrl from './atmosphere.jpg';
+
+
 
 
 
@@ -18,25 +20,25 @@ const WeatherAppJPX = (props) => {
 
     switch (props.icon) {
         case 'wu-tstorms':
-            url = 'url(' + thunderstormImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + thunderstormImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
         case 'wu-chancerain':
-            url = 'url(' + drizzleImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + drizzleImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
         case 'wu-rain':
-            url = 'url(' + rainImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + rainImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
         case 'wu-snow':
-            url = 'url(' + snowImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + snowImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
         case 'wu-fog':
-            url = 'url(' + atmosphereImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + atmosphereImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
         case 'wu-sunny':
-            url = 'url(' + clearImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + clearImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
         case 'wu-cloudy':
-            url = 'url(' + cloudsImgUrl + ')' + `no-repeat center`;
+            url = 'url(' + cloudsImgUrl + ')' + `no-repeat center /100% 100%`;
             break;
     }
 
@@ -45,6 +47,16 @@ const WeatherAppJPX = (props) => {
     };
 
     location = `${props.city} ${props.country}`;
+
+    const buttonAnimation=()=>{
+        const btn= document.getElementById('btn_search');
+        btn.innerHTML='Searching';
+        setTimeout(()=>{
+            btn.innerHTML='Search';
+        },500);
+
+    }
+
 
 
     return (
@@ -76,8 +88,9 @@ const WeatherAppJPX = (props) => {
                                     <span className='contentCity'>City&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                 </label>
                             </div>
-                            <br /><br /><br /><br />
-                            <div><button className='button'> Check Weather</button></div>
+                            <br />
+                            
+                            <div><button className='buttonSearch' id='btn_search' onClick={buttonAnimation}>Search</button></div>
                         </form>
                     </div>
                 </div>

@@ -1,15 +1,11 @@
 
-.main {
-    
+.main {  
     position: fixed;
-    /* background: linear-gradient(91deg, #f1eefc, #9dc6ff 70%, #a5bcff); */
-    /* （body背景色） */
     height: 700px;
     width: 110%;
     font-family: sans-serif;
-    /* background: url(./drizzle.jpeg); 
-    background-size:contain; */
     color: white;
+    
     transition: background 3s;
     
 }
@@ -19,7 +15,29 @@
     color: white;
 }
 
+.buttonSearch{
+    /* background-image: url(./search-solid.svg);
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px; */
+    background:none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    transition: all ease 0.5s;
+    
+}
+.buttonSearch:hover{
+    font-size: 40px;    
+}
+.buttonSearch:active{
+
+}
+
+
 .inputComponent{
+
+    margin-top: 50px;
     height: 80px;
     position: relative;
 
@@ -46,9 +64,7 @@
     height: 50px;     
     left: 0%;
     top:30%;
-    border-bottom: 1px solid black;
-    /* left: -44%;
-    top: 170%; */
+    border-bottom: 2px solid white;
     pointer-events: none;
 }
 .contentCity{
@@ -73,6 +89,8 @@
     display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
+  
 
   /* background-color: wheat; */
 
