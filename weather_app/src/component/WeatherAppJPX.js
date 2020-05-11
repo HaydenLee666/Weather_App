@@ -3,7 +3,7 @@ import './weather.css';
 //import imgurl from './background.jpg';
 import clearImgUrl from './clear.jpg';
 import cloudsImgUrl from './clouds.jpg';
-import drizzleImgUrl from './drizzle.jpeg';
+import drizzleImgUrl from './drizzle.jpg';
 import rainImgUrl from './rain.jpg';
 import snowImgUrl from './snow.jpeg';
 import thunderstormImgUrl from './thunderstorm.jpeg';
@@ -85,7 +85,7 @@ const WeatherAppJPX = (props) => {
                             <div className='inputComponent'>
                                 <input type='text' className='input' name='city' autoComplete='off' />
                                 <label className='labelCity'>
-                                    <span className='contentCity'>City&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                    <span className='contentCity'>City</span>
                                 </label>
                             </div>
                             <br />
