@@ -6,9 +6,12 @@
     padding: 0%;
     margin: 0%;
     font-family: sans-serif;
-    color: white;
-    
+    color: white;   
     transition: background 3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
@@ -67,7 +70,7 @@
     position: absolute;
     width: 100%;
     height: 50px;     
-    margin-left: 0px;
+    right: 3px;
     top:30%;
     border-bottom: 2px solid white;
     pointer-events: none;
@@ -82,8 +85,8 @@
     position: relative;
     width: 900px;
     height: 470px;
-    left: 200px;
-    top: 100px;
+    /* left: 30%;
+    top: 100px; */
     /* background: url(./background.jpg);  */
     /* background: url(background.jpg);    */
     
@@ -182,106 +185,151 @@
     margin-top: 10px;
 }
 
-@media(max-width:1100px){
+@media(max-width:899px){
     .main{
-        width: 1100px;
+        width: 100%;
+        /* height:; */
     }
     .card{
-        left:100px
+        width:100%;
+    }
+    .card_top{
+        width: 100%;
+    }
+    .card_bottom{
+        width: 100%;
     }
 
 }
 
-@media(max-width:1000px){
-    .main{
-        width: 1000px;
-    }
-    .card{
-        left:50px
-    }
-
-}
-
-@media(max-width:900px){
-    .main{
-        width: 1000px;
-    }
-    .card{
-        left:0px;
-        top:0px;
-        width:750px;
-    }
-
-}
-
-@media(max-width:750px){
+@media(max-width:749px){
     .main{
         position: relative;
+        width: 100%;
         height: 900px;
         background: black !important;
     }
     .card{
-       width: 600px;
-       height: 900px;
-       margin:0px;
+       width: 100%;
+       height:900px;
+      
     }
     .card_top{
-        height: 440px;
-        width: 600px;
-        margin:0px;
-    }
-    .card_top_item{
-       margin:0px;
-    }
-    .card_bottom{
-        width: 600px;
-        height:460px;
-        margin:0px;
+        width:100%;
+        height:440px;
+          
     }
     .card_bottom_item{
-        margin:0px;
-
+        margin: 0px;
+      
+    } 
+    .card_top_item{
+        margin: 0px;
+        
     }
+    .card_bottom{
+        width:100%;
+        height:460px;     
+    }
+   
 }
 
-@media(max-width:600px){
+@media(max-width:499px){
     .main{
         position: relative;
-        height: 1450px;
+        width: 100%;
+        height: 1120px;
         background: black !important;
     }
-
-    card{
-        width: 300px;
-        height: 1450px;
-        margin:0px;
-     }
-
-
+    .card{
+       width: 100%;
+       height:1120px;
+      
+    }
     .card_top{
-        height: 660px;
-        width: 300px;
-        margin:0px;
+        width:100%;
+        height:660px;
+          
     }
-
-
-    .card_top_item{
-        margin:0px;
-     }
-
-    .card_bottom{
-        width: 300px;
-        height:790px;
-        margin:0px;
-    }
-
-
-
     .card_bottom_item{
-        margin:0px;
-
+        margin: 0px;
+        
+    } 
+    .card_top_item{
+        margin: 0px;
+       
     }
-
+    .card_bottom{
+        width:100%;
+        height:460px;     
+    }
 
 }
+
+
+@media(max-width:449px){
+    .main{
+        position: relative;
+        width: 100%;
+        height: 1350px;
+        background: black !important;
+    }
+    .card{
+       width: 100%;
+       height:1350px;
+      
+    }
+    .card_top{
+        width:100%;
+        height:660px;
+          
+    }
+    .card_bottom_item{
+        margin: 0px;
+       
+    } 
+    .card_top_item{
+        margin: 0px;
+        
+    }
+    .card_bottom{
+        width:100%;
+        height:690px;     
+    }
+
+}
+
+@media(max-width:299px){
+    .main{
+        position: relative;
+        width: 100%;
+        height: 1410px;
+        background: black !important;
+    }
+    .card{
+       width: 100%;
+       height:1410px;
+      
+    }
+    .card_top{
+        width:100%;
+        height:660px;
+          
+    }
+    .card_bottom_item{
+        margin: 0px;
+        
+    } 
+    .card_top_item{
+        margin: 0px;
+        
+    }
+    .card_bottom{
+        width:100%;
+        height:750px;     
+    }
+
+}
+
+
 
