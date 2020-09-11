@@ -1,3 +1,18 @@
+
+$tablet-screen-size:768px;
+$phone-screen-size:425px;
+
+
+@mixin tablet {
+    @media (max-width: #{$tablet-screen-size}) {
+        @content;
+    }
+}
+@mixin phone {
+    @media (max-width: #{$phone-screen-size}) {
+        @content;
+    }
+}
 .main {
     position: fixed;
     height: 100%;
@@ -11,12 +26,12 @@
     align-items: center;
     justify-content: center;
     opacity: 0.9;
+    @include phone(){
+        position: relative;
+        height: auto;
+        background: black !important;
+    }
     
-}
-
-.icon {
-    font-size: 100px;
-    color: white;
 }
 
 .buttonSearch {
@@ -24,7 +39,7 @@
     background: none;
     border: none;
     color: white;
-    font-size: 30px;
+    font-size: 2.3rem;
     transition: all ease 0.5s;
     &:focus{
         outline: none;
@@ -108,6 +123,10 @@
     position: relative;
     width: 900px;
     height: 470px;
+    @include phone(){
+        width: 100%;
+        height: 1250px;
+    }
 
     &__top {
         height: 250px;
@@ -115,6 +134,9 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        @include phone(){
+            height: 700px;
+        }
 
         &__item {
             width: 250px;
@@ -122,6 +144,9 @@
             height: 220px;
             background-color: transparent;
             font-weight: bold;
+            @include tablet(){
+                width: 230px;
+            }
 
             & i{
                 cursor: default;
@@ -133,11 +158,11 @@
             }
 
             &__description {
-                font-size: 30px;
+                font-size: 2rem;
             }
 
             &__location {
-                font-size: 25px;
+                font-size: 1.7rem;
                 margin-top: 20px;
                 cursor: default;
                 & span{
@@ -146,7 +171,7 @@
             }
 
             &__temp {
-                font-size: 60px;
+                font-size: 4rem;
                 cursor: default;
                 transition: transform ease-out 0.5s;
                 &:hover{
@@ -155,7 +180,7 @@
             }
 
             &__tempMaxMin {
-                font-size: 30px;
+                font-size: 2rem;
                 color: white;
                 margin-bottom: 20px;
                 display: flex;
@@ -170,7 +195,7 @@
             }
 
             &__HWV {
-                font-size: 20px;
+                font-size: 1.4rem;
                 margin-top: 10px;
                 text-align: left;
                 display: flex;
@@ -188,6 +213,9 @@
     flex-wrap: wrap;
     justify-content: space-around;
     font-weight: bold;
+    @include phone(){
+        height: 500px;
+    }
 
     &__item {
         width: 100px;
@@ -203,7 +231,7 @@
         }
 
         &__date {
-            font-size: 20px;
+            font-size: 1.3rem;
             text-align: left;
             margin-left: 15px;
         }
@@ -215,14 +243,14 @@
         }
 
         &__temperture {
-            font-size: 30px;
+            font-size: 2rem;
             text-align: left;
             margin-left: 15px;
             margin-top: 10px;
         }
 
         &__description {
-            font-size: 17px;
+            font-size: 1.1rem;
             text-align: left;
             margin-left: 15px;
             margin-top: 10px;
@@ -230,150 +258,3 @@
     }
 }
 
-@media (max-width: 899px) {
-    .main {
-        width: 100%;
-
-        /* height:; */
-    }
-
-    .card {
-        width: 100%;
-    }
-
-    .card_top {
-        width: 100%;
-    }
-
-    .card_bottom {
-        width: 100%;
-    }
-}
-
-@media (max-width: 749px) {
-    .main {
-        position: relative;
-        width: 100%;
-        height: 900px;
-        background: black !important;
-    }
-
-    .card {
-        width: 100%;
-        height: 900px;
-    }
-
-    .card_top {
-        width: 100%;
-        height: 440px;
-    }
-
-    .card_bottom_item {
-        margin: 0px;
-    }
-
-    .card_top_item {
-        margin: 0px;
-    }
-
-    .card_bottom {
-        width: 100%;
-        height: 460px;
-    }
-}
-
-@media (max-width: 499px) {
-    .main {
-        position: relative;
-        width: 100%;
-        height: 1120px;
-        background: black !important;
-    }
-
-    .card {
-        width: 100%;
-        height: 1120px;
-    }
-
-    .card_top {
-        width: 100%;
-        height: 660px;
-    }
-
-    .card_bottom_item {
-        margin: 0px;
-    }
-
-    .card_top_item {
-        margin: 0px;
-    }
-
-    .card_bottom {
-        width: 100%;
-        height: 460px;
-    }
-}
-
-@media (max-width: 449px) {
-    .main {
-        position: relative;
-        width: 100%;
-        height: 1350px;
-        background: black !important;
-    }
-
-    .card {
-        width: 100%;
-        height: 1350px;
-    }
-
-    .card_top {
-        width: 100%;
-        height: 660px;
-    }
-
-    .card_bottom_item {
-        margin: 0px;
-    }
-
-    .card_top_item {
-        margin: 0px;
-    }
-
-    .card_bottom {
-        width: 100%;
-        height: 690px;
-    }
-}
-
-@media (max-width: 299px) {
-    .main {
-        position: relative;
-        width: 100%;
-        height: 1410px;
-        background: black !important;
-    }
-
-    .card {
-        width: 100%;
-        height: 1410px;
-    }
-
-    .card_top {
-        width: 100%;
-        height: 660px;
-    }
-
-    .card_bottom_item {
-        margin: 0px;
-    }
-
-    .card_top_item {
-        margin: 0px;
-    }
-
-    .card_bottom {
-        width: 100%;
-        height: 750px;
-    }
-}
