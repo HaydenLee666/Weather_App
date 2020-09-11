@@ -144,8 +144,8 @@ class WeatherApp extends React.Component {
     }
     fetchWeather=async(city)=>{
 
-        const api = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`;
-        const apiF = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_key}`;
+        const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`;
+        const apiF = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_key}`;
         //get current weather
         const response = await (await fetch(api)).json();
             if (response.cod === '404') {
