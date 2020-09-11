@@ -1,11 +1,11 @@
-{ 
+{
   "homepage": "https://haydenlee666.github.io/Weather_App/",
   "name": "weather_app",
   "version": "0.1.0",
   "private": true,
-  "engines":{
+  "engines": {
     "node": "13.12.0",
-    "npm":"6.14.4"
+    "npm": "6.14.4"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,8 +18,8 @@
     "weather-underground-icons": "git+https://github.com/manifestinteractive/weather-underground-icons.git"
   },
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
