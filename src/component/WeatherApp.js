@@ -21,8 +21,7 @@ class WeatherApp extends React.Component {
             description: "",
             humidity:undefined,
             windSpeed:undefined,
-            visibility:undefined,
-            
+            visibility:undefined,           
             tempF: [],
             iconF: [],
             dateF: [],
