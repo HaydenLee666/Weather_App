@@ -3,8 +3,8 @@ import Weather from './Weather.js';
 import './WeatherApp.scss';
 
 
-//const API_key = process.env.REACT_APP_WEATHER_API_KEY;
-const API_key='7abb2f96af69ff0a9164e92bc934932d';
+const API_key = process.env.REACT_APP_WEATHER_API_KEY;
+//const API_key='7abb2f96af69ff0a9164e92bc934932d';
 
 class WeatherApp extends React.Component {
     constructor() {
